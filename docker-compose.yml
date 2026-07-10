@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sub-agent
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+    environment:
+      - PYTHONUNBUFFERED=1

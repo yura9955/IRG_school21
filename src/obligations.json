@@ -1,0 +1,122 @@
+[
+    {
+        "id": "a1b2c3d4-0001",
+        "title": "Netflix",
+        "amount": 9.99,
+        "currency": "USD",
+        "category": "subscription",
+        "next_payment_date": "2026-07-10",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0002",
+        "title": "Яндекс.Плюс",
+        "amount": 399,
+        "currency": "RUB",
+        "category": "subscription",
+        "next_payment_date": "2026-07-12",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0003",
+        "title": "YouTube Premium",
+        "amount": 2.99,
+        "currency": "USD",
+        "category": "subscription",
+        "next_payment_date": "2026-07-08",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0004",
+        "title": "Spotify",
+        "amount": 5.99,
+        "currency": "EUR",
+        "category": "music",
+        "next_payment_date":
+        "2026-07-15",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0005",
+        "title": "Adobe CC",
+        "amount": 59.99,
+        "currency": "USD",
+        "category": "software",
+        "next_payment_date": "2026-07-20",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0006",
+        "title": "Dropbox Plus",
+        "amount": 9.99,
+        "currency": "USD",
+        "category": "software",
+        "next_payment_date": "2026-06-28",
+        "status": "paused"
+    },
+    {
+        "id": "a1b2c3d4-0007",
+        "title": "Fitness Online",
+        "amount": 12.50,
+        "currency": "EUR",
+        "category": "health",
+        "next_payment_date": "2026-07-05",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0008",
+        "title": "Облачный хостинг",
+        "amount": 1200,
+        "currency": "RUB",
+        "category": "infrastructure",
+        "next_payment_date": "2026-07-01",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0009",
+        "title": "DigitalOcean",
+        "amount": 6.00,
+        "currency": "USD",
+        "category": "infrastructure",
+        "next_payment_date": "2026-07-10",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0010",
+        "title": "Headspace",
+        "amount": 12.99,
+        "currency": "USD",
+        "category": "health",
+        "next_payment_date":
+        "2026-07-18", "status":
+        "active"
+    },
+    {
+        "id": "a1b2c3d4-0011",
+        "title": "Apple Music",
+        "amount": 4.99,
+        "currency": "EUR",
+        "category": "music",
+        "next_payment_date": "2026-07-22",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0012",
+        "title": "Газпромбанк подписка",
+        "amount": 500,
+        "currency": "RUB",
+        "category": "finance",
+        "next_payment_date": "2026-07-05",
+        "status": "active"
+    },
+    {
+        "id": "a1b2c3d4-0013",
+        "title": "Notion Plus",
+        "amount": 10.00,
+        "currency": "USD",
+        "category": "software",
+        "next_payment_date":
+        "2026-07-09",
+        "status": "active"
+    }
+]

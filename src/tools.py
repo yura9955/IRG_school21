@@ -20,7 +20,7 @@ def get_obligations(status: Optional[str] = None, category: Optional[str] = None
 def convert_currency(amount: float, from_currency: str, to_currency: str) -> float:
     if from_currency.upper() == to_currency.upper():
         return amount
-    url = f"https://api.frankfurter.app/latest?from={from_currency.upper()}&to={to_currency.upper()}"
+    url = f"https://open.er-api.com/v6/latest/{from_currency.upper()}"
     try:
         resp = requests.get(url, timeout=5)
         resp.raise_for_status()

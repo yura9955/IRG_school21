@@ -1,4 +1,7 @@
 import os
+import json
+import sys
+from typing import Optional, List
 from dotenv import load_dotenv
 from langchain_core.tools import tool
 from langchain_core.prompts import PromptTemplate
@@ -11,18 +14,30 @@ import tools as app_tools
 load_dotenv()
 
 @tool
-def get_obligations(status: str | None = None, category: str | None = None) -> list:
+def get_obligations(input_str: str = "") -> List[dict]:
     """
-    Возвращает список финансовых обязательств пользователя.
-    Параметры (опциональные):
-    - status: "active" или "paused" — фильтр по статусу
-    - category: категория подписки, например "subscription", "software", "music", "health", "infrastructure", "finance"
-    Если параметры не указаны, возвращает все обязательства.
+    Параметр:
+    - input_str: JSON строка с полями status и/или category
+      например: '{"status": "active"}' или '{"status": "active", "category": "subscription"}'
+      или '{}' для всех обязательств
+
+    Возвращает список обязательств.
     """
+    status = None
+    category = None
+
+    if input_str and input_str.strip() and input_str.strip() != "{}":
+        try:
+            params = json.loads(input_str)
+            status = params.get("status")
+            category = params.get("category")
+        except json.JSONDecodeError:
+            pass
+
     return app_tools.get_obligations(status, category)
 
 @tool
-def convert_currency(amount: float, from_currency: str, to_currency: str) -> float:
+def convert_currency(input_str: str = "") -> float:
     """
     Конвертирует сумму из одной валюты в другую по актуальному курсу.
     Параметры:
@@ -31,6 +46,10 @@ def convert_currency(amount: float, from_currency: str, to_currency: str) -> flo
     - to_currency: код целевой валюты (USD, EUR, RUB и т.д.)
     Возвращает сконвертированную сумму.
     """
+    params = json.loads(input_str)
+    amount = float(params["amount"])
+    from_currency = params["from_currency"]
+    to_currency = params["to_currency"]
     return app_tools.convert_currency(amount, from_currency, to_currency)
 
 REACT_PROMPT = PromptTemplate.from_template("""
@@ -61,7 +80,7 @@ llm = ChatDeepSeek(model="deepseek-chat", temperature=0, api_key=os.getenv("DEEP
 
 tools = [get_obligations, convert_currency]
 
-agent = create_react_agent(llm, tools, REACT_PROMPT)
+agent = create_react_agent(llm, tools, prompt=REACT_PROMPT)
 
 agent_executor = AgentExecutor(
     agent=agent,
@@ -69,18 +88,19 @@ agent_executor = AgentExecutor(
     verbose=True,
     handle_parsing_errors=True,
     max_iterations=15,
-    return_intermediate_steps=False
 )
 
 if __name__ == "__main__":
-    
+    #print(app_tools.convert_currency(5, "USD", "RUB"))
     while True:
         try:
             user_input = input("Вопрос: ")
-            if user_input.lower() in ("exit"):
+            sys.stdout.flush()
+            if user_input.lower() in ("exit", "выход", "quit"):
                 break
             result = agent_executor.invoke({"input": user_input, "today": str(date.today())})
             print("Ответ:", result["output"])
+            sys.stdout.flush()
 
         except Exception as e:
             print(f"Error: {str(e)}")

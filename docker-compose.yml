@@ -13,4 +13,3 @@ services:
       - PYTHONIOENCODING=utf-8
       - LANG=ru_RU.UTF-8
       - LC_ALL=ru_RU.UTF-8
-    command: python -u main.py

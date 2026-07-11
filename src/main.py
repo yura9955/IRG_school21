@@ -1,6 +1,5 @@
 import os
 import json
-import sys
 from typing import Optional, List
 from dotenv import load_dotenv
 from langchain_core.tools import tool
@@ -91,16 +90,13 @@ agent_executor = AgentExecutor(
 )
 
 if __name__ == "__main__":
-    #print(app_tools.convert_currency(5, "USD", "RUB"))
     while True:
         try:
             user_input = input("Вопрос: ")
-            sys.stdout.flush()
-            if user_input.lower() in ("exit", "выход", "quit"):
+            if user_input.strip().lower() in ("exit", "выход", "quit"):
                 break
             result = agent_executor.invoke({"input": user_input, "today": str(date.today())})
             print("Ответ:", result["output"])
-            sys.stdout.flush()
 
         except Exception as e:
             print(f"Error: {str(e)}")

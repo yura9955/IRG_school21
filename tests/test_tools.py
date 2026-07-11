@@ -73,7 +73,7 @@ class TestConvertCurrency:
         result = convert_currency(10, "USD", "RUB")
         assert result == 894.50
         mock_get.assert_called_once_with(
-            "https://api.frankfurter.app/latest?from=USD&to=RUB",
+            "https://open.er-api.com/v6/latest/USD",
             timeout=5
         )
     

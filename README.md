@@ -5,7 +5,7 @@
 subscription-agent/
 ├── src/
 │   ├── __init__.py
-│   ├── main.py              # Точка входа, запуск агента с REPL-интерфейсом
+│   ├── main.py              # Точка входа, запуск агента
 │   ├── tools.py             # Набор инструментов (get_obligations, convert_currency)
 │   └── obligations.json     # База данных (13 тестовых записей подписок)
 ├── tests/
